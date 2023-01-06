@@ -24,7 +24,7 @@ class InventoryViewModel: ObservableObject {
        let db = Firestore.firestore()
         
         // Specify the document to update
-        db.collection("Inventory").document(id).setData(["item": item,"name": name, "quantity": quantity, "buyprice":buyprice,"sellprice":sellprice ,"sellAt":""], merge: true) {error in
+        db.collection("ezyList").document(self.uid).collection("inStock").document(id).setData(["item": item,"name": name, "quantity": quantity, "buyprice":buyprice,"sellprice":sellprice ,"sellAt":""], merge: true) {error in
             
             //check errors
             if error == nil {
@@ -41,7 +41,7 @@ class InventoryViewModel: ObservableObject {
        let db = Firestore.firestore()
         
         // Specify the document to delete
-        db.collection("Inventory").document(inventoryItemDelete.id).delete { error in
+        db.collection("ezyList").document(self.uid).collection("inStock").document(inventoryItemDelete.id).delete { error in
             
             //check for error
             if error == nil {
@@ -70,7 +70,7 @@ class InventoryViewModel: ObservableObject {
         let db = Firestore.firestore()
         
         //Add adocument to a specific path
-        db.collection("Inventory").addDocument(data: ["item":item, "name":name, "uid":self.uid, "quantity":quantity, "buyprice":buyprice,"sellprice":sellprice, "image":image, "createAt":Date()]) { error in
+        db.collection("ezyList").document(self.uid).collection("inStock").addDocument(data: ["item":item, "name":name, "uid":self.uid, "quantity":quantity, "buyprice":buyprice,"sellprice":sellprice, "image":image, "createAt":Date()]) { error in
             
             //check error
             if error == nil {
@@ -87,6 +87,10 @@ class InventoryViewModel: ObservableObject {
             }//:if error
         }
         
+//        db.collection("ezyList").document(self.uid).collection("inStock").addDocument(data: ["item":item, "name":name, "uid":self.uid, "quantity":quantity, "buyprice":buyprice,"sellprice":sellprice, "image":image, "createAt":Date()]) {error in
+//
+//        }
+        
     } //: addData
     func getData() {
         
@@ -96,7 +100,7 @@ class InventoryViewModel: ObservableObject {
         
         
         //Read the document at a specific path
-        db.collection("Inventory").whereField("uid", isEqualTo: self.uid).getDocuments { snapshot, error in
+        db.collection("ezyList").document(self.uid).collection("inStock").getDocuments { snapshot, error in
 //        db.collection("Inventory").getDocuments
             //check for errors
             if error == nil {
