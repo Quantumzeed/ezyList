@@ -64,22 +64,28 @@ struct NewItemView: View {
                     
                     TextField("pathImage",text: $image)
                         .textFieldStyle(.roundedBorder)
+                        .frame(height: 55)
                     
                     TextField("item", text: $item)
                         .textFieldStyle(.roundedBorder)
+                        .frame(height: 55)
                     
                     TextField("Name", text: $name)
+                        .frame(height: 55)
                         .textFieldStyle(.roundedBorder)
                     
                     TextField("quantity", value: $quantity, formatter: NumberFormatter())
+                        .frame(height: 55)
                         .textFieldStyle(.roundedBorder)
                         .keyboardType(.numberPad)
                     
                     TextField("buyprice", value: $buyprice, format: .currency(code: "THB"))
+                        .frame(height: 55)
                         .textFieldStyle(.roundedBorder)
                         .keyboardType(.numberPad)
                         
                     TextField("sellprice", value: $sellprice, format: .currency(code: "THB"))
+                        .frame(height: 55)
                         .textFieldStyle(.roundedBorder)
                         .keyboardType(.numberPad)
                         

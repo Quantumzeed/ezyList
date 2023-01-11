@@ -51,20 +51,25 @@ struct ItemDetailView: View {
                 
                 Text("Path is \(image)")
                 TextField("item", text: $item)
+                    .frame(height: 55)
                     .textFieldStyle(.roundedBorder)
 
                 TextField("Name", text: $name)
+                    .frame(height: 55)
                     .textFieldStyle(.roundedBorder)
                 
                 TextField("quantity", value: $quantity, formatter: NumberFormatter())
+                    .frame(height: 55)
                     .textFieldStyle(.roundedBorder)
                     .keyboardType(.numberPad)
                 
                 TextField("buyprice", value: $buyprice, format: .currency(code: "THB"))
+                    .frame(height: 55)
                     .textFieldStyle(.roundedBorder)
                     .keyboardType(.numberPad)
                     
                 TextField("sellprice", value: $sellprice, format: .currency(code: "THB"))
+                    .frame(height: 55)
                     .textFieldStyle(.roundedBorder)
                     .keyboardType(.numberPad)
                 

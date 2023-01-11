@@ -66,6 +66,7 @@ struct ItemListView: View {
             .navigationBarTitle("List")
             .navigationBarItems(trailing: AddNewItem)
             
+            
         }//:naviagtion
         .sheet(isPresented: $isPresentedNewItem, content: {
             NewItemView(isPresented: $isPresentedNewItem, item: $item, name: $name, quantity: $quantity,buyprice: $buyprice,sellprice: $sellprice, image: $image, action: {
